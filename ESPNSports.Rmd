@@ -116,8 +116,8 @@ TeamData <- data.frame(TeamData, fit$cluster)
 
 rownames(TeamData) <- paste(TeamData$Sport,TeamData$Team,sep="")
 
-clusplot(TeamData, fit$cluster, color=TRUE, shade=TRUE, 
-  	labels=2, lines=2, cex.txt = .6)
+clusplot(TeamData, fit$cluster, color=TRUE, shade=FALSE, 
+  	labels=2, lines=0, cex.txt = .5,col.clus = c("red", "green"),col.txt = c("black", "black"))
 
 TeamData %>% group_by(TeamData$fit.cluster) %>% summarise(count=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanX2016HF = digits(mean(X2016HF),1),MeanX2017HF = digits(mean(X2017HF),1),MeanPopulation = digits(mean(Population.millions),1),MeanESPNRating = digits(mean(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
@@ -126,7 +126,7 @@ TeamData %>% group_by(TeamData$fit.cluster) %>% summarise(count=n(),MeanX2014HF 
 
 ```{r}
 
-TeamData$Population.millions <- digits(TeamData$Population.millions, 1)
+TeamData$Population.millions <- digits(TeamData$Population.millions,1)
 
 TeamData %>% group_by(ESPNRating) %>% summarise(Count = n(), HowFar = digits(sum(X2014HF,X2015HF,X2016HF,X2017HF)/(4*n()),1), MeanPop = digits(mean(Population.millions),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
