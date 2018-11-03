@@ -1,124 +1,124 @@
-﻿Sport,Team,City,ESPNRating,2014PO,2014HF,2015PO,2015HF,2016PO,2016HF,2017PO,2017HF,Market
-MLB,RedSox,Boston,5,0,0,0,0,1,2,1,2,617594
-MLB,Cubs,Chicago,5,0,0,1,3,1,5,1,3,2695598
-MLB,Indians,Cleveland,5,0,0,0,0,1,4,1,2,396698
-MLB,Astros,Houston,5,0,0,1,2,0,0,1,5,2099451
-MLB,Yankees,New York,5,0,0,1,1,0,0,1,3,8622698
-MLB,As,Oakland,5,1,1,0,0,0,0,0,0,390724
-MLB,Pirates,Pittsburgh,5,1,1,1,1,0,0,0,0,305704
-MLB,Cardinals,St Louis,5,1,3,1,2,0,0,0,0,319294
-MLB,Rays,Tampa Bay,5,0,0,0,0,0,0,0,0,335709
-MLB,Orioles,Baltimore,4,1,3,0,0,1,1,0,0,620961
-MLB,Royals,Kansas City,4,1,4,1,5,0,0,0,0,2159159
-MLB,Dodgers,Los Angeles,4,1,2,1,2,1,3,1,4,3792621
-MLB,Mets,New York,4,0,0,1,4,1,1,0,0,8622698
-MLB,Padres,San Diego,4,0,0,0,0,0,0,0,0,1307402
-MLB,BlueJays,Toronto,4,0,0,1,3,1,3,0,0,2731571
-MLB,Nationals,Washington,4,1,2,0,0,1,2,1,2,6131977
-MLB,WhiteSox,Chicago,3,0,0,0,0,0,0,0,0,2695598
-MLB,Angels,Anaheim,3,1,2,0,0,0,0,0,0,336265
-MLB,Brewers,Milwaukee,3,0,0,0,0,0,0,0,0,594833
-MLB,Giants,San Francisco,3,1,5,0,0,1,2,0,0,884363
-MLB,Mariners,Seattle,3,0,0,0,0,0,0,0,0,608660
-MLB,Rangers,Dallas,3,0,0,1,2,1,2,0,0,1197816
-MLB,Diamondbacks,Phoenix,2,0,0,0,0,0,0,1,2,1445632
-MLB,Braves,Atlanta,2,0,0,0,0,0,0,0,0,420003
-MLB,Reds,Cincinnati,2,0,0,0,0,0,0,0,0,296943
-MLB,Rockies,Denver,2,0,0,0,0,0,0,1,1,600158
-MLB,Tigers,Detroit,2,1,2,0,0,0,0,0,0,713777
-MLB,Twins,Minnesota,2,0,0,0,0,0,0,1,1,382578
-MLB,Marlins,Miami,1,0,0,0,0,0,0,0,0,399457
-MLB,Phillies,Philadelphia,1,0,0,0,0,0,0,0,0,1580863
-NBA,Mavericks,Dallas,5,1,1,1,1,0,0,0,0,1197816
-NBA,Rockets,Houston,5,1,3,1,1,1,2,1,3,2099451
-NBA,76ers,Philadelphia,5,0,0,0,0,0,0,1,2,1580863
-NBA,Spurs,San Antonio,5,1,1,1,2,1,3,1,1,1511946
-NBA,Hawks,Atlanta,4,1,3,1,2,1,1,0,0,420003
-NBA,Celtics,Boston,4,1,1,1,1,1,3,1,3,617594
-NBA,Cavaliers,Cleveland,4,1,4,1,5,1,4,1,4,396698
-NBA,Pistons,Detroit,4,0,0,1,1,0,0,0,0,713777
-NBA,GSWarriors,Oakland,4,1,5,1,4,1,5,1,5,390724
-NBA,Grizzlies,Memphis,4,1,2,0,0,0,0,0,0,646889
-NBA,Thunder,Oklahoma City,4,0,0,1,3,1,1,1,1,579999
-NBA,TrailBlazers,Portland,4,1,1,1,2,1,1,1,1,583776
-NBA,Hornets,Charlotte,3,0,0,1,1,0,0,0,0,731424
-NBA,Pacers,Indianapolis,3,0,0,1,1,1,1,1,1,820445
-NBA,Heat,Miami,3,0,0,1,2,0,0,1,1,399457
-NBA,Bucks,Milwaukee,3,1,1,0,0,1,1,1,1,594833
-NBA,Magic,Orlando,3,0,0,0,0,0,0,0,0,238300
-NBA,Suns,Phoenix,3,0,0,0,0,0,0,0,0,1445632
-NBA,Kings,Sacramento,3,0,0,0,0,0,0,0,0,466488
-NBA,Raptors,Toronto,3,1,1,1,3,1,2,1,2,2731571
-NBA,Jazz,Salt Lake City,3,0,0,0,0,1,2,1,2,186440
-NBA,Bulls,Chicago,2,1,2,0,0,1,1,0,0,2695598
-NBA,Nuggets,Denver,2,0,0,0,0,0,0,0,0,600158
-NBA,Clippers,Los Angeles,2,1,2,1,1,1,1,0,0,3792621
-NBA,Timberwolves,Minnesota,2,0,0,1,1,1,1,1,1,382578
-NBA,Pelicans,New Orleans,2,1,1,0,0,0,0,1,2,343829
-NBA,Wizards,Washington,2,1,2,0,0,1,2,1,1,6131977
-NBA,Nets,New York,1,1,1,0,0,0,0,0,0,8622698
-NBA,Lakers,Los Angeles,1,0,0,0,0,0,0,0,0,3792621
-NBA,Knicks,New York,1,0,0,0,0,0,0,0,0,8622698
-NHL,Blackhawks,Chicago,5,1,5,1,1,1,1,0,0,2695598
-NHL,Bruins,Boston,4,0,0,0,0,1,1,1,2,617594
-NHL,Sabres,Buffalo,4,0,0,0,0,0,0,0,0,261452
-NHL,BlueJackets,Columbus,4,0,0,0,0,1,1,1,1,787033
-NHL,Oilers,Edmonton,4,0,0,0,0,1,2,0,0,932546
-NHL,Kings,Los Angeles,4,0,0,1,1,0,0,1,1,3792621
-NHL,Wild,Minnesota,4,1,2,1,1,1,1,1,1,382578
-NHL,Islanders,New York,4,1,1,1,2,0,0,0,0,8622698
-NHL,Penguins,Pittsburgh,4,1,1,1,5,1,5,1,2,305704
-NHL,Blues,St Louis,4,1,1,1,3,1,2,0,0,319294
-NHL,Lightning,Tampa Bay,4,1,4,1,3,0,0,1,3,335709
-NHL,MapleLeafs,Toronto,4,0,0,0,0,1,1,1,1,2731571
-NHL,Capitals,Washington,4,1,2,1,2,1,2,1,5,6131977
-NHL,Jets,Winnipeg,4,1,1,0,0,0,0,1,3,705244
-NHL,Coyotes,Phoenix,3,0,0,0,0,0,0,0,0,1445632
-NHL,Flames,Calgary,3,1,2,0,0,1,1,0,0,1239220
-NHL,Hurricanes,Raliegh,3,0,0,0,0,0,0,0,0,403892
-NHL,Stars,Dallas,3,0,0,1,2,0,0,0,0,1197816
-NHL,RedWings,Detroit,3,1,1,1,1,0,0,0,0,713777
-NHL,Panthers,Sunrise,3,0,0,1,1,0,0,0,0,84439
-NHL,Canadiens,Montreal,3,1,2,0,0,1,1,0,0,1704694
-NHL,Predators,Nashville,3,1,1,1,2,1,4,1,2,691243
-NHL,Devils,Newark,3,0,0,0,0,0,0,1,1,277140
-NHL,Flyers,Philadelphia,3,0,0,1,1,0,0,1,1,1580863
-NHL,Sharks,San Jose,3,0,0,1,4,1,1,1,2,945942
-NHL,Canucks,Vancouver,3,1,1,0,0,0,0,0,0,631486
-NHL,Ducks,Anaheim,2,1,3,1,1,1,3,1,1,336265
-NHL,Rangers,New York,2,1,3,1,1,1,2,0,0,8622698
-NHL,Senators,Ottawa,2,1,1,0,0,1,3,0,0,934243
-NHL,Avalanche,Denver,1,0,0,0,0,0,0,1,1,600158
-NFL,Falcons,Atlanta,4,0,0,0,0,1,4,1,2,420003
-NFL,Ravens,Baltimore,4,1,2,0,0,0,0,0,0,620961
-NFL,Browns,Cleveland,4,0,0,0,0,0,0,0,0,396698
-NFL,Cowboys,Dallas,4,1,2,0,0,1,2,0,0,1197816
-NFL,Jaguars,Jacksonville,4,0,0,0,0,0,0,1,3,821784
-NFL,Chiefs,Kansas City,4,0,0,1,2,1,2,1,1,2159159
-NFL,Patriots,Boston,4,1,5,1,3,1,5,1,4,617594
-NFL,Eagles,Philadelphia,4,0,0,0,0,0,0,1,5,1580863
-NFL,49ers,San Francisco,4,0,0,0,0,0,0,0,0,884363
-NFL,Bills,Buffalo,3,0,0,0,0,0,0,1,1,261452
-NFL,Bears,Chicago,3,0,0,0,0,0,0,0,0,2695598
-NFL,Packers,Green Bay,3,1,3,1,2,1,3,0,0,104057
-NFL,Dolphins,Miami,3,0,0,0,0,1,1,0,0,399457
-NFL,Raiders,Oakland,3,0,0,0,0,1,1,0,0,390724
-NFL,Seahawks,Seattle,3,1,4,1,2,1,2,0,0,608660
-NFL,Buccaneers,Tampa Bay,3,0,0,0,0,0,0,0,0,335709
-NFL,Cardinals,Phoenix,2,1,1,1,3,0,0,0,0,1445632
-NFL,Panthers,Charlotte,2,1,2,1,4,0,0,1,1,731424
-NFL,Bengals,Cincinnati,2,1,1,1,1,0,0,0,0,296943
-NFL,Broncos,Denver,2,1,2,1,5,0,0,0,0,600158
-NFL,Lions,Detroit,2,1,1,0,0,1,1,0,0,713777
-NFL,Texans,Houston,2,0,0,1,1,1,2,0,0,2099451
-NFL,Colts,Indianapolis,2,1,3,0,0,0,0,0,0,820445
-NFL,Vikings,Minnesota,2,0,0,1,1,0,0,1,3,382578
-NFL,Saints,New Orleans,2,0,0,0,0,0,0,1,2,343829
-NFL,Giants,New York,2,0,0,0,0,1,1,0,0,8622698
-NFL,Steelers,Pittsburgh,2,1,1,1,2,1,3,1,2,305704
-NFL,Rams,Los Angeles,2,0,0,0,0,0,0,1,1,3792621
-NFL,Jets,New York,1,0,0,0,0,0,0,0,0,8622698
-NFL,Chargers,Los Angeles,1,0,0,0,0,0,0,0,0,3792621
-NFL,Titans,Nashville,1,0,0,0,0,0,0,1,2,691243
-NFL,Redskins,Washington,1,0,0,1,1,0,0,0,0,6131977
-NHL,Golden Knights,Las Vegas,5,0,0,0,0,0,0,1,4,583756
+﻿Sport,Team,City,ESPNRating,2014PO,2014HF,2015PO,2015HF,2016PO,2016HF,2017PO,2017HF,2018PO,2018HF,Market
+MLB,RedSox,Boston,5,0,0,0,0,1,2,1,2,1,5,617594
+MLB,Cubs,Chicago,5,0,0,1,3,1,5,1,3,0,0,2695598
+MLB,Indians,Cleveland,5,0,0,0,0,1,4,1,2,1,2,396698
+MLB,Astros,Houston,5,0,0,1,2,0,0,1,5,1,3,2099451
+MLB,Yankees,New York,5,0,0,1,1,0,0,1,3,1,2,8622698
+MLB,As,Oakland,5,1,1,0,0,0,0,0,0,1,1,390724
+MLB,Pirates,Pittsburgh,5,1,1,1,1,0,0,0,0,0,0,305704
+MLB,Cardinals,St Louis,5,1,3,1,2,0,0,0,0,0,0,319294
+MLB,Rays,Tampa Bay,5,0,0,0,0,0,0,0,0,0,0,335709
+MLB,Orioles,Baltimore,4,1,3,0,0,1,1,0,0,0,0,620961
+MLB,Royals,Kansas City,4,1,4,1,5,0,0,0,0,0,0,2159159
+MLB,Dodgers,Los Angeles,4,1,2,1,2,1,3,1,4,1,4,3792621
+MLB,Mets,New York,4,0,0,1,4,1,1,0,0,0,0,8622698
+MLB,Padres,San Diego,4,0,0,0,0,0,0,0,0,0,0,1307402
+MLB,BlueJays,Toronto,4,0,0,1,3,1,3,0,0,0,0,2731571
+MLB,Nationals,Washington,4,1,2,0,0,1,2,1,2,0,0,6131977
+MLB,WhiteSox,Chicago,3,0,0,0,0,0,0,0,0,0,0,2695598
+MLB,Angels,Anaheim,3,1,2,0,0,0,0,0,0,0,0,336265
+MLB,Brewers,Milwaukee,3,0,0,0,0,0,0,0,0,1,3,594833
+MLB,Giants,San Francisco,3,1,5,0,0,1,2,0,0,0,0,884363
+MLB,Mariners,Seattle,3,0,0,0,0,0,0,0,0,0,0,608660
+MLB,Rangers,Dallas,3,0,0,1,2,1,2,0,0,0,0,1197816
+MLB,Diamondbacks,Phoenix,2,0,0,0,0,0,0,1,2,0,0,1445632
+MLB,Braves,Atlanta,2,0,0,0,0,0,0,0,0,1,2,420003
+MLB,Reds,Cincinnati,2,0,0,0,0,0,0,0,0,0,0,296943
+MLB,Rockies,Denver,2,0,0,0,0,0,0,1,1,0,0,600158
+MLB,Tigers,Detroit,2,1,2,0,0,0,0,0,0,0,0,713777
+MLB,Twins,Minnesota,2,0,0,0,0,0,0,1,1,0,0,382578
+MLB,Marlins,Miami,1,0,0,0,0,0,0,0,0,0,0,399457
+MLB,Phillies,Philadelphia,1,0,0,0,0,0,0,0,0,0,0,1580863
+NBA,Mavericks,Dallas,5,1,1,1,1,0,0,0,0,0,0,1197816
+NBA,Rockets,Houston,5,1,3,1,1,1,2,1,3,0,0,2099451
+NBA,76ers,Philadelphia,5,0,0,0,0,0,0,1,2,0,0,1580863
+NBA,Spurs,San Antonio,5,1,1,1,2,1,3,1,1,0,0,1511946
+NBA,Hawks,Atlanta,4,1,3,1,2,1,1,0,0,0,0,420003
+NBA,Celtics,Boston,4,1,1,1,1,1,3,1,3,0,0,617594
+NBA,Cavaliers,Cleveland,4,1,4,1,5,1,4,1,4,0,0,396698
+NBA,Pistons,Detroit,4,0,0,1,1,0,0,0,0,0,0,713777
+NBA,GSWarriors,Oakland,4,1,5,1,4,1,5,1,5,0,0,390724
+NBA,Grizzlies,Memphis,4,1,2,0,0,0,0,0,0,0,0,646889
+NBA,Thunder,Oklahoma City,4,0,0,1,3,1,1,1,1,0,0,579999
+NBA,TrailBlazers,Portland,4,1,1,1,2,1,1,1,1,0,0,583776
+NBA,Hornets,Charlotte,3,0,0,1,1,0,0,0,0,0,0,731424
+NBA,Pacers,Indianapolis,3,0,0,1,1,1,1,1,1,0,0,820445
+NBA,Heat,Miami,3,0,0,1,2,0,0,1,1,0,0,399457
+NBA,Bucks,Milwaukee,3,1,1,0,0,1,1,1,1,0,0,594833
+NBA,Magic,Orlando,3,0,0,0,0,0,0,0,0,0,0,238300
+NBA,Suns,Phoenix,3,0,0,0,0,0,0,0,0,0,0,1445632
+NBA,Kings,Sacramento,3,0,0,0,0,0,0,0,0,0,0,466488
+NBA,Raptors,Toronto,3,1,1,1,3,1,2,1,2,0,0,2731571
+NBA,Jazz,Salt Lake City,3,0,0,0,0,1,2,1,2,0,0,186440
+NBA,Bulls,Chicago,2,1,2,0,0,1,1,0,0,0,0,2695598
+NBA,Nuggets,Denver,2,0,0,0,0,0,0,0,0,0,0,600158
+NBA,Clippers,Los Angeles,2,1,2,1,1,1,1,0,0,0,0,3792621
+NBA,Timberwolves,Minnesota,2,0,0,1,1,1,1,1,1,0,0,382578
+NBA,Pelicans,New Orleans,2,1,1,0,0,0,0,1,2,0,0,343829
+NBA,Wizards,Washington,2,1,2,0,0,1,2,1,1,0,0,6131977
+NBA,Nets,New York,1,1,2,1,1,0,0,0,0,0,0,8622698
+NBA,Lakers,Los Angeles,1,0,0,0,0,0,0,0,0,0,0,3792621
+NBA,Knicks,New York,1,0,0,0,0,0,0,0,0,0,0,8622698
+NHL,Blackhawks,Chicago,5,1,5,1,1,1,1,0,0,0,0,2695598
+NHL,Bruins,Boston,4,0,0,0,0,1,1,1,2,0,0,617594
+NHL,Sabres,Buffalo,4,0,0,0,0,0,0,0,0,0,0,261452
+NHL,BlueJackets,Columbus,4,0,0,0,0,1,1,1,1,0,0,787033
+NHL,Oilers,Edmonton,4,0,0,0,0,1,2,0,0,0,0,932546
+NHL,Kings,Los Angeles,4,0,0,1,1,0,0,1,1,0,0,3792621
+NHL,Wild,Minnesota,4,1,2,1,1,1,1,1,1,0,0,382578
+NHL,Islanders,New York,4,1,1,1,2,0,0,0,0,0,0,8622698
+NHL,Penguins,Pittsburgh,4,1,1,1,5,1,5,1,2,0,0,305704
+NHL,Blues,St Louis,4,1,1,1,3,1,2,0,0,0,0,319294
+NHL,Lightning,Tampa Bay,4,1,4,1,3,0,0,1,3,0,0,335709
+NHL,MapleLeafs,Toronto,4,0,0,0,0,1,1,1,1,0,0,2731571
+NHL,Capitals,Washington,4,1,2,1,2,1,2,1,5,0,0,6131977
+NHL,Jets,Winnipeg,4,1,1,0,0,0,0,1,3,0,0,705244
+NHL,Coyotes,Phoenix,3,0,0,0,0,0,0,0,0,0,0,1445632
+NHL,Flames,Calgary,3,1,2,0,0,1,1,0,0,0,0,1239220
+NHL,Hurricanes,Raliegh,3,0,0,0,0,0,0,0,0,0,0,403892
+NHL,Stars,Dallas,3,0,0,1,2,0,0,0,0,0,0,1197816
+NHL,RedWings,Detroit,3,1,1,1,1,0,0,0,0,0,0,713777
+NHL,Panthers,Sunrise,3,0,0,1,1,0,0,0,0,0,0,84439
+NHL,Canadiens,Montreal,3,1,2,0,0,1,1,0,0,0,0,1704694
+NHL,Predators,Nashville,3,1,1,1,2,1,4,1,2,0,0,691243
+NHL,Devils,Newark,3,0,0,0,0,0,0,1,1,0,0,277140
+NHL,Flyers,Philadelphia,3,0,0,1,1,0,0,1,1,0,0,1580863
+NHL,Sharks,San Jose,3,0,0,1,4,1,1,1,2,0,0,945942
+NHL,Canucks,Vancouver,3,1,1,0,0,0,0,0,0,0,0,631486
+NHL,Ducks,Anaheim,2,1,3,1,1,1,3,1,1,0,0,336265
+NHL,Rangers,New York,2,1,3,1,1,1,2,0,0,0,0,8622698
+NHL,Senators,Ottawa,2,1,1,0,0,1,3,0,0,0,0,934243
+NHL,Avalanche,Denver,1,0,0,0,0,0,0,1,1,0,0,600158
+NFL,Falcons,Atlanta,4,0,0,0,0,1,4,1,2,0,0,420003
+NFL,Ravens,Baltimore,4,1,2,0,0,0,0,0,0,0,0,620961
+NFL,Browns,Cleveland,4,0,0,0,0,0,0,0,0,0,0,396698
+NFL,Cowboys,Dallas,4,1,2,0,0,1,2,0,0,0,0,1197816
+NFL,Jaguars,Jacksonville,4,0,0,0,0,0,0,1,3,0,0,821784
+NFL,Chiefs,Kansas City,4,0,0,1,2,1,2,1,1,0,0,2159159
+NFL,Patriots,Boston,4,1,5,1,3,1,5,1,4,0,0,617594
+NFL,Eagles,Philadelphia,4,0,0,0,0,0,0,1,5,0,0,1580863
+NFL,49ers,San Francisco,4,0,0,0,0,0,0,0,0,0,0,884363
+NFL,Bills,Buffalo,3,0,0,0,0,0,0,1,1,0,0,261452
+NFL,Bears,Chicago,3,0,0,0,0,0,0,0,0,0,0,2695598
+NFL,Packers,Green Bay,3,1,3,1,2,1,3,0,0,0,0,104057
+NFL,Dolphins,Miami,3,0,0,0,0,1,1,0,0,0,0,399457
+NFL,Raiders,Oakland,3,0,0,0,0,1,1,0,0,0,0,390724
+NFL,Seahawks,Seattle,3,1,4,1,2,1,2,0,0,0,0,608660
+NFL,Buccaneers,Tampa Bay,3,0,0,0,0,0,0,0,0,0,0,335709
+NFL,Cardinals,Phoenix,2,1,1,1,3,0,0,0,0,0,0,1445632
+NFL,Panthers,Charlotte,2,1,2,1,4,0,0,1,1,0,0,731424
+NFL,Bengals,Cincinnati,2,1,1,1,1,0,0,0,0,0,0,296943
+NFL,Broncos,Denver,2,1,2,1,5,0,0,0,0,0,0,600158
+NFL,Lions,Detroit,2,1,1,0,0,1,1,0,0,0,0,713777
+NFL,Texans,Houston,2,0,0,1,1,1,2,0,0,0,0,2099451
+NFL,Colts,Indianapolis,2,1,3,0,0,0,0,0,0,0,0,820445
+NFL,Vikings,Minnesota,2,0,0,1,1,0,0,1,3,0,0,382578
+NFL,Saints,New Orleans,2,0,0,0,0,0,0,1,2,0,0,343829
+NFL,Giants,New York,2,0,0,0,0,1,1,0,0,0,0,8622698
+NFL,Steelers,Pittsburgh,2,1,1,1,2,1,3,1,2,0,0,305704
+NFL,Rams,Los Angeles,2,0,0,0,0,0,0,1,1,0,0,3792621
+NFL,Jets,New York,1,0,0,0,0,0,0,0,0,0,0,8622698
+NFL,Chargers,Los Angeles,1,0,0,0,0,0,0,0,0,0,0,3792621
+NFL,Titans,Nashville,1,0,0,0,0,0,0,1,2,0,0,691243
+NFL,Redskins,Washington,1,0,0,1,1,0,0,0,0,0,0,6131977
+NHL,Golden Knights,Las Vegas,5,0,0,0,0,0,0,1,4,0,0,583756
