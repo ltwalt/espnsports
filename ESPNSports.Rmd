@@ -1,11 +1,13 @@
 ---
-title: "ESPN_Sports"
+title: "Does Analytics Work?"
 author: "Walt DeGrange"
-date: "November 4, 2018"
+date: "April 8, 2019"
 output:
   html_document: default
   pdf_document: default
 ---
+==
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE)
@@ -31,17 +33,20 @@ library(lares)
 
 ```{r Data Import, echo=FALSE}
 TeamData <- read.csv("ESPNSportsAnalytics.csv")
+
 colnames(TeamData)[1] <- "Sport"
+
 TeamData %<>% mutate(PopulationMil = digits(Market/1000000,1))
-TeamDataKM <- TeamData %>% select(ESPNRating,X2014HF,X2015HF,X2016HF,X2017HF,Market)
+
+TeamDataKM2017 <- TeamData %>% select(ESPNRating,X2014HF,X2015HF,X2016HF,X2017HF,Market)
 
 ```
 
 ## Overall
 ```{r}
-TeamData %<>% group_by(Team) %>% mutate(HowFar = sum(X2014HF,X2015HF,X2016HF,X2017HF)/4)
+TeamDataNew <- TeamData %>% group_by(Team) %>% mutate(HowFar = sum(X2014HF,X2015HF,X2016HF,X2017HF)/4)
 
-TeamData %>% group_by(Sport) %>% summarise(count = n(), MeanESPN = digits(mean(ESPNRating),1), StdESPN = digits(sd(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(Sport) %>% summarise(count = n(), MeanESPN = digits(mean(ESPNRating),1), StdESPN = digits(sd(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 
 
@@ -49,7 +54,7 @@ TeamData %>% group_by(Sport) %>% summarise(count = n(), MeanESPN = digits(mean(E
 
 ```{r Local Teams}
 
-TeamData %>% group_by(Sport,Team,HowFar) %>% filter(City == "Phoenix") %>%  summarise(count = n(), ESPN = (ESPNRating)) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("Raleigh","Charlotte")) %>% summarise(count = n(), ESPN = ESPNRating) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 
 
 ```
@@ -61,43 +66,47 @@ _____
 ## 2014
 
 ```{r}
-TeamData %>% filter(X2014HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% filter(X2014HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 
 ## 2015
 
 ```{r}
-TeamData %>% filter(X2015HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% filter(X2015HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 
 ## 2016
 
 ```{r}
-TeamData %>% filter(X2016HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% filter(X2016HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 
 
 ## 2017
 
 ```{r}
-TeamData %>% filter(X2017HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% filter(X2017HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
+## 2018
 
+```{r}
+TeamDataNew %>% filter(X2018HF == "5") %>%  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  arrange(Sport) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+```
 _____
 
 ## Team list grouped by ESPN Ranking
 
 ```{r}
 
-TeamData$PopulationMil <- digits(TeamData$PopulationMil,1)
+TeamDataNew$PopulationMil <- digits(TeamDataNew$PopulationMil,1)
 
-TeamData %>% group_by(ESPNRating) %>% summarise(Count = n(), HowFar = digits(sum(X2014HF,X2015HF,X2016HF,X2017HF)/(4*n()),1), MeanPop = digits(mean(PopulationMil),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(ESPNRating) %>% summarise(Count = n(), HowFar = digits(sum(X2014HF,X2015HF,X2016HF,X2017HF)/(4*n()),1), MeanPop = digits(mean(PopulationMil),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 
 
 ## Ten best ESPN Rating performers
 ```{r}
-TeamData %>% select(Sport,Team,City,ESPNRating,PopulationMil,HowFar) %>% arrange(-HowFar) %>% head(10, ESPNRating)  %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% select(Sport,Team,City,ESPNRating,PopulationMil,HowFar) %>% arrange(-HowFar) %>% head(10, ESPNRating)  %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 
 ```
 \medskip
@@ -105,7 +114,7 @@ TeamData %>% select(Sport,Team,City,ESPNRating,PopulationMil,HowFar) %>% arrange
 ## Ten bottom ESPN Rating performers
 ```{r}
 
-TeamData %>% select(Sport,Team,City,ESPNRating,PopulationMil,HowFar) %>%  arrange(-ESPNRating,HowFar) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% select(Sport,Team,City,ESPNRating,PopulationMil,HowFar) %>%  arrange(-ESPNRating,HowFar) %>% head(10) %>%  kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 ____
 
@@ -121,26 +130,26 @@ ESPNTable <- stargazer(TeamDataDF, type="html", align = TRUE, digits=1)
 ### Los Angeles
 ```{r Big to Small Market}
 
-TeamData %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("Los Angeles","Anaheim")) %>%  summarise(count = n(), ESPN = (ESPNRating)) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("Los Angeles","Anaheim")) %>%  summarise(count = n(), ESPN = (ESPNRating)) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 
 
 ```
 ### New York
 ```{r}
-TeamData %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("New York")) %>%  summarise(count = n(), ESPN = (ESPNRating)) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("New York")) %>%  summarise(count = n(), ESPN = (ESPNRating)) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 
 
 ```
 ### Green Bay
 ```{r}
-TeamData %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("Green Bay")) %>%  summarise(count = n(), ESPN = (ESPNRating)) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("Green Bay")) %>%  summarise(count = n(), ESPN = (ESPNRating)) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 
 ## Plot of ESPN vs How Far a team made it into the playoffs on average for the 4 years of data
 
 ```{r Plots}
 
-TeamData %>% ggplot(aes(x=ESPNRating,y=HowFar)) +
+TeamDataNew %>% ggplot(aes(x=ESPNRating,y=HowFar)) +
   geom_point()+
   geom_smooth()
 
@@ -151,7 +160,38 @@ TeamData %>% ggplot(aes(x=ESPNRating,y=HowFar)) +
 
 ```{r KMeans Cluster}
 
-TeamDataKM <- scale(TeamDataKM)
+TeamDataKM2017 <- scale(TeamDataKM2017)
+
+# Determine number of clusters
+wss <- (nrow(TeamDataKM2017)-1)*sum(apply(TeamDataKM2017,2,var))
+for (i in 2:15) wss[i] <- sum(kmeans(TeamDataKM2017,
+  	centers=i)$withinss)
+plot(1:15, wss, type="b", xlab="Number of Clusters",
+  ylab="Within groups sum of squares")
+
+fit <- kmeans(TeamDataKM2017, 2)
+
+TeamDataKM2017 <- data.frame(TeamDataKM2017, fit$cluster)
+
+TeamData2017 <- data.frame(TeamData, fit$cluster)
+
+rownames(TeamData2017) <- paste(TeamData2017$Sport,TeamData2017$Team,sep="")
+
+clusplot(TeamData2017, fit$cluster, color=TRUE, shade=FALSE, 
+  	labels=2, lines=0, cex.txt = .5,col.clus = c("red", "green"),col.txt = c("black", "black"))
+
+TeamData2017 %>% group_by(TeamData2017$fit.cluster) %>% summarise(count=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanX2016HF = digits(mean(X2016HF),1),MeanX2017HF = digits(mean(X2017HF),1),MeanPopulation = digits(mean(PopulationMil),1),MeanESPNRating = digits(mean(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+```
+
+## K-Means Clustering Multi-Year Analysis
+
+```{r Multi-Year}
+
+TeamData2016 <- TeamData
+
+TeamDataKM2016 <- TeamData %>% select(ESPNRating,X2014HF,X2015HF,X2016HF,Market)
+
+TeamDataKM2016 <- scale(TeamDataKM2016)
 
 # Determine number of clusters
 # wss <- (nrow(TeamDataKM)-1)*sum(apply(TeamDataKM,2,var))
@@ -160,17 +200,55 @@ TeamDataKM <- scale(TeamDataKM)
 # plot(1:15, wss, type="b", xlab="Number of Clusters",
 #   ylab="Within groups sum of squares")
 
-fit <- kmeans(TeamDataKM, 2)
+fit <- kmeans(TeamDataKM2016, 2)
 
-TeamDataKM <- data.frame(TeamDataKM, fit$cluster)
+TeamDataKM2016 <- data.frame(TeamDataKM2016, fit$cluster)
 
-TeamData <- data.frame(TeamData, fit$cluster)
+TeamData2016 <- data.frame(TeamData, fit$cluster)
 
-rownames(TeamData) <- paste(TeamData$Sport,TeamData$Team,sep="")
+rownames(TeamData2016) <- paste(TeamData2016$Sport,TeamData2016$Team,sep="")
 
-clusplot(TeamData, fit$cluster, color=TRUE, shade=FALSE, 
+clusplot(TeamData2016, fit$cluster, color=TRUE, shade=FALSE, 
   	labels=2, lines=0, cex.txt = .5,col.clus = c("red", "green"),col.txt = c("black", "black"))
 
-TeamData %>% group_by(TeamData$fit.cluster) %>% summarise(count=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanX2016HF = digits(mean(X2016HF),1),MeanX2017HF = digits(mean(X2017HF),1),MeanPopulation = digits(mean(PopulationMil),1),MeanESPNRating = digits(mean(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamData2016 %>% group_by(TeamData2016$fit.cluster) %>% summarise(count=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanX2016HF = digits(mean(X2016HF),1),MeanPopulation = digits(mean(PopulationMil),1),MeanESPNRating = digits(mean(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+
+TeamData2015 <- TeamData
+
+TeamDataKM2015 <- TeamData %>% select(ESPNRating,X2014HF,X2015HF,Market)
+
+TeamDataKM2015 <- scale(TeamDataKM2015)
+
+# Determine number of clusters
+# wss <- (nrow(TeamDataKM)-1)*sum(apply(TeamDataKM,2,var))
+# for (i in 2:15) wss[i] <- sum(kmeans(TeamDataKM,
+#   	centers=i)$withinss)
+# plot(1:15, wss, type="b", xlab="Number of Clusters",
+#   ylab="Within groups sum of squares")
+
+fit <- kmeans(TeamDataKM2015, 2)
+
+TeamDataKM2015 <- data.frame(TeamDataKM2015, fit$cluster)
+
+TeamData2015 <- data.frame(TeamData, fit$cluster)
+
+rownames(TeamData2015) <- paste(TeamData2015$Sport,TeamData2015$Team,sep="")
+
+clusplot(TeamData2015, fit$cluster, color=TRUE, shade=FALSE, 
+  	labels=2, lines=0, cex.txt = .5,col.clus = c("red", "green"),col.txt = c("black", "black"))
+
+TeamData2015 %>% group_by(TeamData2015$fit.cluster) %>% summarise(count=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanPopulation = digits(mean(PopulationMil),1),MeanESPNRating = digits(mean(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+```
+```{r K-Means over time}
+
+ESPNAnalytics <- data.frame("Year" = c(2015,2016,2017),"High" = c(4.0,3.7,3.8),"Low" = c(2.2,2.9,2.9))
+
+ESPNAnalytics %>% ggplot() +
+  geom_line(aes(x=Year, y=High, color="Green")) +
+  geom_line(aes(x=Year, y=Low), color="Dark Blue") +
+  scale_x_continuous(breaks = seq(2015,2017, by=1)) +
+  scale_y_continuous(limits = c(0,5)) +
+  ylab("Mean K-Means Group ESPNAnalytics Score") +
+  theme(legend.position="none") 
 ```
 
