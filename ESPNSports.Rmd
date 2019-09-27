@@ -1,7 +1,7 @@
 ---
-title: "Does Analytics Work?"
+title: "Does analytics work in professional sports?"
 author: "Walt DeGrange"
-date: "April 8, 2019"
+date: "September 27, 2019"
 output:
   html_document: default
   pdf_document: default
@@ -40,11 +40,15 @@ TeamData %<>% mutate(PopulationMil = digits(Market/1000000,1))
 
 TeamDataKM2017 <- TeamData %>% select(ESPNRating,X2014HF,X2015HF,X2016HF,X2017HF,Market)
 
+TeamDataKM2018 <- TeamData %>% select(ESPNRating,X2014HF,X2015HF,X2016HF,X2017HF,X2018HF, Market)
+
 ```
 
 ## Overall
 ```{r}
-TeamDataNew <- TeamData %>% group_by(Team) %>% mutate(HowFar = sum(X2014HF,X2015HF,X2016HF,X2017HF)/4)
+TeamDataNew <- TeamData %>% group_by(Team) %>% mutate(HowFar = sum(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF)/5)
+
+TeamDataNew$HowFar[TeamDataNew$Team == "Golden Knights"] <- 5/2
 
 TeamDataNew %>% group_by(Sport) %>% summarise(count = n(), MeanESPN = digits(mean(ESPNRating),1), StdESPN = digits(sd(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
@@ -54,7 +58,7 @@ TeamDataNew %>% group_by(Sport) %>% summarise(count = n(), MeanESPN = digits(mea
 
 ```{r Local Teams}
 
-TeamDataNew %>% group_by(City,Sport,Team,HowFar) %>% filter(City %in% c("Washington","Philadelphia","San Antonio","Tampa Bay")) %>% summarise(count = n(), ESPN = ESPNRating) %>% select(City,Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(City,Sport,Team,HowFar) %>% filter(City %in% c("Washington","Memphis","Las Vegas")) %>% summarise(count = n(), ESPN = ESPNRating) %>% select(City,Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 
 
 ```
@@ -160,27 +164,27 @@ TeamDataNew %>% ggplot(aes(x=ESPNRating,y=HowFar)) +
 
 ```{r KMeans Cluster}
 
-TeamDataKM2017 <- scale(TeamDataKM2017)
+TeamDataKM2018 <- scale(TeamDataKM2018)
 
 # Determine number of clusters
-wss <- (nrow(TeamDataKM2017)-1)*sum(apply(TeamDataKM2017,2,var))
-for (i in 2:15) wss[i] <- sum(kmeans(TeamDataKM2017,
+wss <- (nrow(TeamDataKM2018)-1)*sum(apply(TeamDataKM2018,2,var))
+for (i in 2:15) wss[i] <- sum(kmeans(TeamDataKM2018,
   	centers=i)$withinss)
 plot(1:15, wss, type="b", xlab="Number of Clusters",
   ylab="Within groups sum of squares")
 
-fit <- kmeans(TeamDataKM2017, 2)
+fit <- kmeans(TeamDataKM2018, 2)
 
-TeamDataKM2017 <- data.frame(TeamDataKM2017, fit$cluster)
+TeamDataKM2018 <- data.frame(TeamDataKM2018, fit$cluster)
 
-TeamData2017 <- data.frame(TeamData, fit$cluster)
+TeamData2018 <- data.frame(TeamData, fit$cluster)
 
-rownames(TeamData2017) <- paste(TeamData2017$Sport,TeamData2017$Team,sep="")
+rownames(TeamData2018) <- paste(TeamData2018$Sport,TeamData2018$Team,sep="")
 
-clusplot(TeamData2017, fit$cluster, color=TRUE, shade=FALSE, 
+clusplot(TeamData2018, fit$cluster, color=TRUE, shade=FALSE, 
   	labels=2, lines=0, cex.txt = .5,col.clus = c("red", "green"),col.txt = c("black", "black"))
 
-TeamData2017 %>% group_by(TeamData2017$fit.cluster) %>% summarise(count=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanX2016HF = digits(mean(X2016HF),1),MeanX2017HF = digits(mean(X2017HF),1),MeanPopulation = digits(mean(PopulationMil),1),MeanESPNRating = digits(mean(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamData2018 %>% group_by(TeamData2018$fit.cluster) %>% summarise(count=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanX2016HF = digits(mean(X2016HF),1),MeanX2017HF = digits(mean(X2017HF),1),MeanX2018HF = digits(mean(X2018HF),1),MeanPopulation = digits(mean(PopulationMil),1),MeanESPNRating = digits(mean(ESPNRating),1)) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 ```
 
 ## K-Means Clustering Multi-Year Analysis
@@ -241,12 +245,12 @@ TeamData2015 %>% group_by(TeamData2015$fit.cluster) %>% summarise(count=n(),Mean
 ```
 ```{r K-Means over time}
 
-ESPNAnalytics <- data.frame("Year" = c(2015,2016,2017),"High" = c(4.0,3.7,3.8),"Low" = c(2.2,2.9,2.9))
+ESPNAnalytics <- data.frame("Year" = c(2015,2016,2017,2018),"High" = c(4.0,3.7,3.8,3.3),"Low" = c(2.2,2.9,2.9,2.3))
 
 ESPNAnalytics %>% ggplot() +
   geom_line(aes(x=Year, y=High, color="Green")) +
   geom_line(aes(x=Year, y=Low), color="Dark Blue") +
-  scale_x_continuous(breaks = seq(2015,2017, by=1)) +
+  scale_x_continuous(breaks = seq(2015,2018, by=1)) +
   scale_y_continuous(limits = c(0,5)) +
   ylab("Mean K-Means Group ESPNAnalytics Score") +
   theme(legend.position="none") 
