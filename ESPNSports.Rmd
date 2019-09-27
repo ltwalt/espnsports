@@ -54,7 +54,7 @@ TeamDataNew %>% group_by(Sport) %>% summarise(count = n(), MeanESPN = digits(mea
 
 ```{r Local Teams}
 
-TeamDataNew %>% group_by(Sport,Team,HowFar) %>% filter(City %in% c("Raleigh","Charlotte")) %>% summarise(count = n(), ESPN = ESPNRating) %>% select(Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
+TeamDataNew %>% group_by(City,Sport,Team,HowFar) %>% filter(City %in% c("Washington","Philadelphia","San Antonio","Tampa Bay")) %>% summarise(count = n(), ESPN = ESPNRating) %>% select(City,Team,ESPN,HowFar) %>% kable() %>% kable_styling(c("striped","condensed"), full_width = F) %>% column_spec(column = 1:2, color = "black")
 
 
 ```
