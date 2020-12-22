@@ -351,8 +351,6 @@ ESPNBest
 
 ```
 
-\medskip
-
 ## Ten bottom ESPN Rating performers
 
 ```{r Bottom 10, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
@@ -380,6 +378,7 @@ ESPNWorst
 ```
 
 ------------------------------------------------------------------------
+
 ## Big to Small Market Teams
 
 ### Los Angeles
@@ -715,6 +714,7 @@ ESPNAnalyticsTime
 
 
 ```
+
 ```{r Reorder Slides and Produce New Slide Deck, eval = FALSE}
 
 print(UofArkPresNew, target = "Before Slide Moves - U of Ark.pptx")
@@ -726,4 +726,3 @@ for(i in 1:17){
 print(UofArkPresNew, target = "201111 2020 - Is Analytics in Professional Sports Making a Difference - U of Ark.pptx")
 
 ```
-
