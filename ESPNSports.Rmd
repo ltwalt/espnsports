@@ -61,6 +61,8 @@ TeamDataKM2018 <- TeamData %>% select(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF)
 
 TeamDataKM2019 <- TeamData %>% select(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF,X2019HF)
 
+TeamDataKM2020 <- TeamData %>% select(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF,X2019HF,X2020HF)
+
 ```
 
 ## Overall
@@ -69,7 +71,7 @@ TeamDataKM2019 <- TeamData %>% select(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF,X2
 
 TeamDataNew <- TeamData %>% 
   group_by(Team) %>% 
-  mutate(HowFar = sum(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF,X2019HF)/6)
+  mutate(HowFar = digits(sum(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF,X2019HF,X2020HF)/7,2))
 
 # New team only last three years with 8 total for how far
 TeamDataNew$HowFar[TeamDataNew$Team == "Golden Knights"] <- 8/3
@@ -294,6 +296,34 @@ Champ2019
 
 ```
 
+## 2020
+
+```{r 2020, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+
+Champ2020 <- TeamDataNew %>% 
+  filter(X2020HF == "5") %>%  
+  select(Sport,Team,City,ESPNRating,PopulationMil) %>%  
+  arrange(Sport) %>% 
+  head(10) %>%  
+  flextable() %>%
+  bold(part = "header") %>% 
+  align(align = "center", part = "header" ) %>% 
+  fontsize(size = 16, part = "all") %>% 
+  autofit() %>% 
+  bg(bg = "white",part = "all")
+
+
+UofArkPresNew <- UofArkPres %>%
+  add_slide(master = "Black") %>% 
+  ph_with(value = "Champions 2020", location = ph_location_type(type = "title")) %>% 
+  ph_with(Champ2020, location = ph_location(left = 1.5, top = 2))
+
+# UofArkPresNew <- UofArkPresNew %>% move_slide(index = 15, to = 9)
+
+Champ2020
+
+```
+
 ------------------------------------------------------------------------
 
 ## Team list grouped by ESPN Ranking
@@ -304,7 +334,7 @@ TeamDataNew$PopulationMil <- digits(TeamDataNew$PopulationMil,1)
 
 ESPNRank <- TeamDataNew %>% 
   group_by(ESPNRating) %>% 
-  summarise(Count = n(), HowFar = digits(sum(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF)/(5*n()),1), MeanPop = digits(mean(PopulationMil),1), MeanSalary = digits(sum(X2014Salary,X2015Salary,X2016Salary,X2017Salary,X2018Salary,X2019Salary)/(6*n()),1)) %>% 
+  summarise(Count = n(), HowFar = digits(sum(X2014HF,X2015HF,X2016HF,X2017HF,X2018HF,X2019HF,X2020HF)/(7*n()),1), MeanPop = digits(mean(PopulationMil),1), MeanSalary = digits(sum(X2014Salary,X2015Salary,X2016Salary,X2017Salary,X2018Salary,X2019Salary,X2020Salary)/(7*n()),1)) %>% 
   flextable() %>%
 #  colformat_num(j = 5, digits = 1) %>% 
   bold(part = "header") %>% 
@@ -476,6 +506,67 @@ TeamDataNew %>% ggplot(aes(x=ESPNRating,y=HowFar)) +
 
 ```
 
+## K Means clustering 2020
+
+```{r KMeans Cluster 2019, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+
+TeamDataKM2020 <- scale(TeamDataKM2020)
+
+fit <- kmeans(TeamDataKM2020, 2)
+
+TeamDataKM2020 <- data.frame(TeamDataKM2020, fit$cluster)
+
+TeamData2020 <- data.frame(TeamData, fit$cluster)
+
+rownames(TeamData2020) <- paste(TeamData2020$Sport,TeamData2020$Team,sep="")
+
+
+clusplot(TeamData2020, fit$cluster, color=TRUE, shade=FALSE, 
+    labels=2, lines=0, cex.txt = .5,col.clus = c("red", "green"),col.txt = c("black", "black"))
+
+TeamData2020 %<>% rename(Cluster = fit.cluster) 
+
+TeamData2020DT <- TeamData2020 %>% 
+  group_by(Cluster) %>% 
+  summarise(Teams=n(),MeanX2014HF = digits(mean(X2014HF),1),MeanX2015HF = digits(mean(X2015HF),1),MeanX2016HF = digits(mean(X2016HF),1),MeanX2017HF = digits(mean(X2017HF),1),MeanX2018HF = digits(mean(X2018HF),1),MeanX2019HF = digits(mean(X2019HF),1),MeanX2020HF = digits(mean(X2020HF),1),MeanPopulation = digits(mean(PopulationMil),1),MeanSalary = digits(mean(X2020Salary),1),MeanESPNRating = digits(mean(ESPNRating),1))
+
+# TeamData2019DT <- as.data.frame(t(TeamData2019DT))
+# 
+# colnames(TeamData2019DT) <- c("1","2")
+
+TeamData2020DTFT <- TeamData2020DT %>% 
+  flextable() %>%
+#  colformat_num(digits = 1) %>% 
+  bold(part = "header") %>% 
+#  align(align = "center", part = "header" ) %>% 
+  fontsize(size = 12, part = "all") %>% 
+  rotate(rotation = "tbrl", align = "center", part = "header") %>% 
+  align(align = "right", part = "header") %>% 
+  valign(valign = "center", part = "header") %>% 
+  align(align = "center", part = "body") %>% 
+  set_table_properties(width = .2, layout = "autofit") %>% 
+#  autofit() %>% 
+  height(height = 2, part = "header") %>% 
+  bg(bg = "white",part = "all") %>% 
+  bg(j = 12, bg = "yellow", part = "all") %>% 
+  bg(j = 10:11, bg = "green", part = "all")
+
+UofArkPresNew <- UofArkPres %>%
+  add_slide(master = "Black") %>%
+  ph_with(value = "2020 K-Means Clustering Plot", location = ph_location_type(type = "title")) %>%
+  ph_with(external_img("km2020plot.png"), location = ph_location_type(type = "body"), use_loc_size = TRUE)
+
+UofArkPresNew <- UofArkPres %>%
+  add_slide(master = "Black") %>% 
+  ph_with(value = "2020 K-Means Clustering Data", location = ph_location_type(type = "title")) %>% 
+  ph_with(TeamData2020DTFT, location = ph_location(left = 0.8, top = 2.5))
+
+# UofArkPresNew <- UofArkPresNew %>% move_slide(index = 15, to = 9)
+
+TeamData2020DTFT
+
+```
+
 ## K Means clustering 2019
 
 ```{r KMeans Cluster 2019, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
@@ -520,15 +611,15 @@ TeamData2019DTFT <- TeamData2019DT %>%
   bg(j = 11, bg = "yellow", part = "all") %>% 
   bg(j = 9:10, bg = "green", part = "all")
 
-UofArkPresNew <- UofArkPres %>%
-  add_slide(master = "Black") %>%
-  ph_with(value = "2019 K-Means Clustering Plot", location = ph_location_type(type = "title")) %>%
-  ph_with(external_img("km2019plot.jpg"), location = ph_location_type(type = "body"), use_loc_size = TRUE)
-
-UofArkPresNew <- UofArkPres %>%
-  add_slide(master = "Black") %>% 
-  ph_with(value = "2019 K-Means Clustering Data", location = ph_location_type(type = "title")) %>% 
-  ph_with(TeamData2019DTFT, location = ph_location(left = 0.8, top = 2.5))
+# UofArkPresNew <- UofArkPres %>%
+#   add_slide(master = "Black") %>%
+#   ph_with(value = "2019 K-Means Clustering Plot", location = ph_location_type(type = "title")) %>%
+#   ph_with(external_img("km2019plot.jpg"), location = ph_location_type(type = "body"), use_loc_size = TRUE)
+# 
+# UofArkPresNew <- UofArkPres %>%
+#   add_slide(master = "Black") %>% 
+#   ph_with(value = "2019 K-Means Clustering Data", location = ph_location_type(type = "title")) %>% 
+#   ph_with(TeamData2019DTFT, location = ph_location(left = 0.8, top = 2.5))
 
 # UofArkPresNew <- UofArkPresNew %>% move_slide(index = 15, to = 9)
 
@@ -678,7 +769,7 @@ TeamData2015DT <- TeamData2015 %>%
   align(align = "center", part = "body") %>% 
   set_table_properties(width = .2, layout = "autofit") %>% 
 #  autofit() %>% 
-  height(height = 1.5, part = "header") %>% 
+  height(height = 2, part = "header") %>% 
   bg(bg = "white",part = "all") %>% 
   bg(j = 7, bg = "yellow", part = "all") %>% 
   bg(j = 5:6, bg = "green", part = "all")
@@ -689,23 +780,23 @@ TeamData2015DT
 
 ```{r K-Means over time, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
 
-ESPNAnalytics <- data.frame("Year" = c(2015,2016,2017,2018,2019),"High" = c(3.5,3.6,3.8,4.0,4.0),"Low" = c(3.1,3.0,2.9,2.9,2.9))
+ESPNAnalytics <- data.frame("Year" = c(2015,2016,2017,2018,2019,2020),"High" = c(3.5,3.6,3.8,4.0,4.0,4.0),"Low" = c(3.1,3.0,2.9,2.9,2.9,2.9))
 
 ESPNAnalyticsTime <- ESPNAnalytics %>% ggplot() +
   geom_line(aes(x=Year, y=High), color="green", size=1.5) +
   geom_line(aes(x=Year, y=Low), color="red", size=1.5) +
-  scale_x_continuous(breaks = seq(2015,2019, by=1)) +
-  scale_y_continuous(limits = c(0,5)) +
+  scale_x_continuous(breaks = seq(2015,2020, by=1)) +
+  scale_y_continuous(limits = c(0,6)) +
   ylab("Mean K-Means Group ESPNAnalytics Score") +
   theme(legend.position="none", text = element_text(size = 50)) +
-  ggtitle("2015-2019 Gap Between High and Low ESPN Analytics Groups") +
+  ggtitle("2015-2020 Gap Between High and Low ESPN Analytics Groups") +
   theme_dark() +
   geom_label(aes(x = Year,y = High, label= paste(digits(High,1))), bg = "green") +
   geom_label(aes(x = Year,y = Low, label= paste(digits(Low,1))), bg = "red", color = "white")
 
 UofArkPresNew <- UofArkPres %>%
   add_slide(master = "Black") %>% 
-#  ph_with(value = "2014-2019 Group 1 vs Group 2", location = ph_location_type(type = "title")) %>% 
+#  ph_with(value = "2014-2020 Group 1 vs Group 2", location = ph_location_type(type = "title")) %>% 
   ph_with(ESPNAnalyticsTime, location = ph_location_fullsize(), pointsize = 50)
 
 # UofArkPresNew <- UofArkPresNew %>% move_slide(index = 15, to = 9)
@@ -719,10 +810,10 @@ ESPNAnalyticsTime
 
 print(UofArkPresNew, target = "Before Slide Moves - U of Ark.pptx")
 
-for(i in 1:17){
-  UofArkPresNew <- move_slide(UofArkPresNew, index = i+18, to = i+10)
-}
-
-print(UofArkPresNew, target = "201111 2020 - Is Analytics in Professional Sports Making a Difference - U of Ark.pptx")
+# for(i in 1:19){
+#   UofArkPresNew <- move_slide(UofArkPresNew, index = i+18, to = i+10)
+# }
+# 
+# print(UofArkPresNew, target = "220210 2021 - Is Analytics in Professional Sports Making a Difference - U of Ark.pptx")
 
 ```
